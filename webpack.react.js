@@ -6,7 +6,8 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx', ".js", ".jsx"],
     },
-    target: 'electron-renderer',
+    target: 'web',
+    // target: 'electron-renderer',
     devtool: 'source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),

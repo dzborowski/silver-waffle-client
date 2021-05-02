@@ -2,15 +2,14 @@ import {app, BrowserWindow} from 'electron'
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
         webPreferences: {
             nodeIntegration: true
         }
     })
 
-   win.webContents.openDevTools();
-    win.loadURL('index.html')
+    win.webContents.openDevTools();
+    win.maximize();
+    win.loadURL('http://localhost:9000/assets/index.html')
 }
 
 app.whenReady().then(() => {
