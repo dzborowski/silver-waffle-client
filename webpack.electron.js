@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     entry: './src/main.ts',
     target: 'electron-main',
@@ -8,7 +10,7 @@ module.exports = {
         }]
     },
     output: {
-        path: __dirname + '/dist',
+        path: path.join(__dirname, 'dist'),
         filename: 'main.js'
     }
 }
