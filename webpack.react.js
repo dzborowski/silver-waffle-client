@@ -9,7 +9,8 @@ module.exports = {
     target: 'electron-renderer',
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dist/renderer.js'),
+        contentBase: path.join(__dirname, 'dist'),
+        publicPath: "/assets",
         compress: true,
         port: 9000
     },
