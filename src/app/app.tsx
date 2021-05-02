@@ -1,5 +1,5 @@
-import * as React from 'react';
-import "./app.scss"
+import * as React from "react";
+import "./app.scss";
 
 export const App = () => {
     return (
@@ -7,4 +7,4 @@ export const App = () => {
             <h1>I'm React running in Electron App!!</h1>
         </div>
     );
-}
+};

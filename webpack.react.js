@@ -1,43 +1,39 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
     entry: "./src/renderer.tsx",
     resolve: {
-        extensions: ['.ts', '.tsx', ".js", ".jsx"],
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
-    target: 'web',
+    target: "web",
     // target: 'electron-renderer',
-    devtool: 'source-map',
+    devtool: "source-map",
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, "dist"),
         publicPath: "/assets",
         compress: true,
-        port: 9000
+        port: 9000,
     },
     module: {
         rules: [
             {
                 test: /\.ts(x?)$/,
-                use: ['ts-loader']
+                use: ["ts-loader"],
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
-            }
-        ]
+                use: ["style-loader", "css-loader", "sass-loader"],
+            },
+        ],
     },
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'renderer.js'
+        path: path.join(__dirname, "dist"),
+        filename: "renderer.js",
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
-        })
-    ]
+            template: "./src/index.html",
+        }),
+    ],
 };

@@ -1,29 +1,29 @@
-import {app, BrowserWindow} from 'electron'
+import {app, BrowserWindow} from "electron";
 
 function createWindow() {
     const win = new BrowserWindow({
         webPreferences: {
-            nodeIntegration: true
-        }
-    })
+            nodeIntegration: true,
+        },
+    });
 
     win.webContents.openDevTools();
     win.maximize();
-    win.loadURL('http://localhost:9000/assets/index.html')
+    win.loadURL("http://localhost:9000/assets/index.html");
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    createWindow();
 
-    app.on('activate', () => {
+    app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
+            createWindow();
         }
-    })
-})
+    });
+});
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit()
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+        app.quit();
     }
-})
+});
