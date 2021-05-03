@@ -9,7 +9,7 @@ function createWindow() {
 
     win.webContents.openDevTools();
     win.maximize();
-    win.loadURL("http://localhost:9000/assets/index.html");
+    win.loadURL("http://localhost:9000");
 }
 
 app.whenReady().then(() => {
