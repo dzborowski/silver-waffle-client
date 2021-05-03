@@ -6,6 +6,7 @@
         "allowJs": true,
         "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
-        "jsx": "react"
+        "jsx": "react-jsx",
+        "sourceMap": true
     }
 }
