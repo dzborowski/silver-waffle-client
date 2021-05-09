@@ -20,10 +20,10 @@ export class App extends React.Component {
                     <Header />
                     <div className={"content"}>
                         <Switch>
-                            <Route exact={true} path="/login">
+                            <Route path="/login">
                                 <Login />
                             </Route>
-                            <Route exact={true} path="/register">
+                            <Route path="/register">
                                 <Register />
                             </Route>
                             <Route path="/game/:gameId">
