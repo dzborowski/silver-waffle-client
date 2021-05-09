@@ -2,9 +2,11 @@ import * as React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "./App.scss";
 import {Header} from "./common/header/Header";
-import {Register} from "./auth/Register";
-import {Login} from "./auth/Login";
+import {Register} from "./core/auth/view/Register";
+import {Login} from "./core/auth/view/Login";
 import {rootStore} from "../renderer";
+import {GamesList} from "./game/view/GamesList";
+import {Game} from "./game/view/Game";
 
 export class App extends React.Component {
     public async componentDidMount() {
@@ -24,8 +26,11 @@ export class App extends React.Component {
                             <Route path="/register">
                                 <Register />
                             </Route>
+                            <Route path="/game/:gameId">
+                                <Game />
+                            </Route>
                             <Route path="/">
-                                <Register />
+                                <GamesList />
                             </Route>
                         </Switch>
                     </div>

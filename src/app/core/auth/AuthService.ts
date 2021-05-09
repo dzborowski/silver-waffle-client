@@ -1,8 +1,8 @@
-import {ILoggedUser} from "./ILoggedUser";
+import {ILoggedUser} from "./interface/ILoggedUser";
 import {ApiService} from "../api/ApiService";
-import {IAuthRegisterUser} from "./IAuthRegisterUser";
-import {IAuthLoginCredentials} from "./IAuthLoginCredentials";
-import {IAuthLoginTokens} from "./IAuthLoginTokens";
+import {IAuthRegisterUser} from "./interface/IAuthRegisterUser";
+import {IAuthLoginCredentials} from "./interface/IAuthLoginCredentials";
+import {IAuthLoginTokens} from "./interface/IAuthLoginTokens";
 
 export class AuthService {
     public static async registerUser(user: IAuthRegisterUser): Promise<ILoggedUser> {

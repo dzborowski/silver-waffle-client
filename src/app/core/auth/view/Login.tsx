@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
 import {RouteComponentProps, withRouter} from "react-router";
-import {IAuthLoginCredentials} from "./IAuthLoginCredentials";
-import {rootStore} from "../../renderer";
+import {IAuthLoginCredentials} from "../interface/IAuthLoginCredentials";
+import {rootStore} from "../../../../renderer";
 
 interface IProps extends RouteComponentProps {}
 

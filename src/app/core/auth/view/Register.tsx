@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button, Col, Form} from "react-bootstrap";
-import {IAuthRegisterUser} from "./IAuthRegisterUser";
-import {AuthService} from "./AuthService";
+import {IAuthRegisterUser} from "../interface/IAuthRegisterUser";
+import {AuthService} from "../AuthService";
 import {RouteComponentProps, withRouter} from "react-router";
 
 interface IProps extends RouteComponentProps {}

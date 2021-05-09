@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from "axios";
-import {AppConfig} from "../AppConfig";
+import {AppConfig} from "../../AppConfig";
 
 export class ApiService {
     public static api: AxiosInstance;
