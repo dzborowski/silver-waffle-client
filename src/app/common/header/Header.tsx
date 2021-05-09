@@ -2,22 +2,21 @@ import * as React from "react";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import "./Header.scss";
 import {RouteComponentProps, withRouter} from "react-router";
-import {AuthContext} from "../../auth/AuthContext";
-import {IAuthContext} from "../../auth/IAuthContext";
+import {rootStore} from "../../../renderer";
+import {observer} from "mobx-react";
 
-export const Header = withRouter(class InnerHeader extends React.Component<RouteComponentProps> {
-    public static contextType = AuthContext;
-
+@observer
+class InnerHeader extends React.Component<RouteComponentProps> {
     protected getLoggedInUserAvailableActions(): React.ReactNode {
+        const loggedUser = rootStore.auth.loggedUser;
         return (
-            <NavDropdown
-                title={`${this.authContext.loggedUser?.firstName} ${this.authContext.loggedUser?.lastName}`}
-                id="collasible-nav-dropdown"
-            >
-                <NavDropdown.Item onClick={() => {
-                    this.authContext.logout();
-                    this.props.history.push("/");
-                }}>
+            <NavDropdown title={`${loggedUser?.firstName} ${loggedUser?.lastName}`} id="collasible-nav-dropdown">
+                <NavDropdown.Item
+                    onClick={() => {
+                        rootStore.auth.logout();
+                        this.props.history.push("/");
+                    }}
+                >
                     Wyloguj się
                 </NavDropdown.Item>
             </NavDropdown>
@@ -27,44 +26,47 @@ export const Header = withRouter(class InnerHeader extends React.Component<Route
     protected getLoggedOutUserAvailableActions(): React.ReactNode {
         return (
             <NavDropdown title="Konto" id="collasible-nav-dropdown">
-                <NavDropdown.Item onClick={() => {
-                    this.props.history.push("/login");
-                }}>
+                <NavDropdown.Item
+                    onClick={() => {
+                        this.props.history.push("/login");
+                    }}
+                >
                     Zaloguj się
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => {
-                    this.props.history.push("/register");
-                }}>
+                <NavDropdown.Item
+                    onClick={() => {
+                        this.props.history.push("/register");
+                    }}
+                >
                     Zarejestruj się
                 </NavDropdown.Item>
             </NavDropdown>
         );
     }
 
-    protected get authContext(): IAuthContext {
-        return this.context as IAuthContext;
-    }
-
     public render() {
         return (
             <div className={"Header"}>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand onClick={() => {
-                        this.props.history.push("/");
-                    }}>
+                    <Navbar.Brand
+                        onClick={() => {
+                            this.props.history.push("/");
+                        }}
+                    >
                         Gry
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav>
-                            {this.authContext.isLoggedIn() ?
-                                this.getLoggedInUserAvailableActions() :
-                                this.getLoggedOutUserAvailableActions()
-                            }
+                            {rootStore.auth.isLoggedIn()
+                                ? this.getLoggedInUserAvailableActions()
+                                : this.getLoggedOutUserAvailableActions()}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
             </div>
         );
     }
-});
+}
+
+export const Header = withRouter(InnerHeader);

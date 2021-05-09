@@ -2,20 +2,16 @@ import * as React from "react";
 import {Button, Form} from "react-bootstrap";
 import {RouteComponentProps, withRouter} from "react-router";
 import {IAuthLoginCredentials} from "./IAuthLoginCredentials";
-import {AuthService} from "./AuthService";
-import {AuthContext} from "./AuthContext";
-import {IAuthContext} from "./IAuthContext";
+import {rootStore} from "../../renderer";
 
-interface IProps extends RouteComponentProps{}
+interface IProps extends RouteComponentProps {}
 
 interface IState {
-    authLoginCredentials: IAuthLoginCredentials
+    authLoginCredentials: IAuthLoginCredentials;
 }
 
-export const Login = withRouter(class InnerLogin extends React.Component<IProps, IState> {
-    public static contextType = AuthContext;
-
-    constructor(props:IProps) {
+class InnerLogin extends React.Component<RouteComponentProps, IState> {
+    constructor(props: IProps) {
         super(props);
 
         this.state = {
@@ -34,19 +30,12 @@ export const Login = withRouter(class InnerLogin extends React.Component<IProps,
                 ...data,
             },
         }));
-    }
+    };
 
     protected login = async () => {
-        const authLoginTokens = await AuthService.login(this.state.authLoginCredentials);
-        this.authContext.setAuthLoginTokens(authLoginTokens);
-        const loggedUser = await AuthService.getLoggedUser();
-        this.authContext.setLoggedUser(loggedUser);
+        await rootStore.auth.login(this.state.authLoginCredentials);
         this.props.history.push("/");
-    }
-
-    protected get authContext():IAuthContext {
-        return this.context as IAuthContext;
-    }
+    };
 
     public render() {
         return (
@@ -62,9 +51,7 @@ export const Login = withRouter(class InnerLogin extends React.Component<IProps,
                                 this.setAuthLoginCredentialsProperty({email: event.target.value});
                             }}
                         />
-                        <Form.Text className="text-muted">
-                            We will never share your email with anyone else.
-                        </Form.Text>
+                        <Form.Text className="text-muted">We will never share your email with anyone else.</Form.Text>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
@@ -86,4 +73,6 @@ export const Login = withRouter(class InnerLogin extends React.Component<IProps,
             </div>
         );
     }
-});
+}
+
+export const Login = withRouter(InnerLogin);
