@@ -48,9 +48,11 @@
         "webpack-dev-server": "^3.11.2"
     },
     "dependencies": {
+        "@types/history": "^4.7.8",
         "@types/react-router-dom": "^5.1.7",
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
+        "history": "^4.10.1",
         "mobx": "^6.3.0",
         "mobx-react": "^7.1.0",
         "react-bootstrap": "^1.5.2",

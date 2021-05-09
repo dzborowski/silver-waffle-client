@@ -1,16 +1,15 @@
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
-import {RouteComponentProps, withRouter} from "react-router";
 import {IAuthLoginCredentials} from "../interface/IAuthLoginCredentials";
-import {rootStore} from "../../../../renderer";
+import {customHistory, rootStore} from "../../../../renderer";
 
-interface IProps extends RouteComponentProps {}
+interface IProps {}
 
 interface IState {
     authLoginCredentials: IAuthLoginCredentials;
 }
 
-class InnerLogin extends React.Component<RouteComponentProps, IState> {
+export class Login extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
 
@@ -34,7 +33,7 @@ class InnerLogin extends React.Component<RouteComponentProps, IState> {
 
     protected login = async () => {
         await rootStore.auth.login(this.state.authLoginCredentials);
-        this.props.history.push("/");
+        customHistory.push("/");
     };
 
     public render() {
@@ -74,5 +73,3 @@ class InnerLogin extends React.Component<RouteComponentProps, IState> {
         );
     }
 }
-
-export const Login = withRouter(InnerLogin);

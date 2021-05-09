@@ -1,5 +1,5 @@
 import * as React from "react";
-import {rootStore} from "../../../renderer";
+import {rootStore, socket} from "../../../renderer";
 import {observer} from "mobx-react";
 import {Button} from "react-bootstrap";
 import {IGame} from "../interface/IGame";
@@ -8,14 +8,23 @@ import {IGame} from "../interface/IGame";
 export class GamesList extends React.Component {
     public async componentDidMount() {
         await rootStore.game.loadGames();
+        socket.on("new-game-created", () => {
+            rootStore.game.loadGames();
+        });
     }
+
+    protected createGame = () => {
+        // socket.emit("createGame");
+    };
 
     protected joinToGame = (gameId: string) => {};
 
     public render() {
         return (
             <div className={"GamesList"}>
-                <Button variant="primary">Create Game</Button>
+                <Button variant="primary" onClick={this.createGame}>
+                    Create Game
+                </Button>
 
                 <div className={"available-games"}>
                     {rootStore.game.games.map((game: IGame) => (

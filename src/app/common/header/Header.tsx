@@ -1,12 +1,11 @@
 import * as React from "react";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import "./Header.scss";
-import {RouteComponentProps, withRouter} from "react-router";
-import {rootStore} from "../../../renderer";
+import {customHistory, rootStore} from "../../../renderer";
 import {observer} from "mobx-react";
 
 @observer
-class InnerHeader extends React.Component<RouteComponentProps> {
+export class Header extends React.Component {
     protected getLoggedInUserAvailableActions(): React.ReactNode {
         const loggedUser = rootStore.auth.loggedUser;
         return (
@@ -14,7 +13,7 @@ class InnerHeader extends React.Component<RouteComponentProps> {
                 <NavDropdown.Item
                     onClick={() => {
                         rootStore.auth.logout();
-                        this.props.history.push("/");
+                        customHistory.push("/");
                     }}
                 >
                     Wyloguj się
@@ -28,14 +27,14 @@ class InnerHeader extends React.Component<RouteComponentProps> {
             <NavDropdown title="Konto" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                     onClick={() => {
-                        this.props.history.push("/login");
+                        customHistory.push("/login");
                     }}
                 >
                     Zaloguj się
                 </NavDropdown.Item>
                 <NavDropdown.Item
                     onClick={() => {
-                        this.props.history.push("/register");
+                        customHistory.push("/register");
                     }}
                 >
                     Zarejestruj się
@@ -50,7 +49,7 @@ class InnerHeader extends React.Component<RouteComponentProps> {
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Navbar.Brand
                         onClick={() => {
-                            this.props.history.push("/");
+                            customHistory.push("/");
                         }}
                     >
                         Gry
@@ -68,5 +67,3 @@ class InnerHeader extends React.Component<RouteComponentProps> {
         );
     }
 }
-
-export const Header = withRouter(InnerHeader);
