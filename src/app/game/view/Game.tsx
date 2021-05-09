@@ -1,7 +1,12 @@
 import * as React from "react";
+import {IGame} from "../interface/IGame";
 
-export class Game extends React.Component {
+interface IProps {
+    game: IGame;
+}
+
+export class Game extends React.Component<IProps> {
     public render() {
-        return <div>Game</div>;
+        return <div className={"Game"}></div>;
     }
 }

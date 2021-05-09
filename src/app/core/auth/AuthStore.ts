@@ -4,6 +4,7 @@ import {action, computed, observable, runInAction} from "mobx";
 import {ApiService} from "../api/ApiService";
 import {AuthService} from "./AuthService";
 import {IAuthLoginCredentials} from "./interface/IAuthLoginCredentials";
+import {AuthUtil} from "./AuthUtil";
 
 export class AuthStore {
     @observable
@@ -15,7 +16,7 @@ export class AuthStore {
     @action
     public async initAuth() {
         try {
-            const accessToken = localStorage.getItem("accessToken");
+            const accessToken = AuthUtil.getAccessToken();
             const refreshToken = localStorage.getItem("refreshToken");
 
             if (accessToken && refreshToken) {
