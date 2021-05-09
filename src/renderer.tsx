@@ -5,14 +5,14 @@ import {App} from "./app/App";
 import {ApiService} from "./app/core/api/ApiService";
 import {RootStore} from "./app/core/RootStore";
 import {AppConfig} from "./app/AppConfig";
-import {AuthUtil} from "./app/core/auth/AuthUtil";
+import {AuthTokensUtil} from "./app/core/auth/AuthTokensUtil";
 
 ApiService.init();
 
 export const rootStore = new RootStore();
 export const socket = io(AppConfig.getSocketUrl(), {
     auth: (cb) => {
-        const data = {token: AuthUtil.getAccessToken()};
+        const data = {token: AuthTokensUtil.getAccessToken()};
         cb(data);
     },
 });

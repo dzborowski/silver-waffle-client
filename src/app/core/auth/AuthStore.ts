@@ -4,7 +4,7 @@ import {action, computed, observable, runInAction} from "mobx";
 import {ApiService} from "../api/ApiService";
 import {AuthService} from "./AuthService";
 import {IAuthLoginCredentials} from "./interface/IAuthLoginCredentials";
-import {AuthUtil} from "./AuthUtil";
+import {AuthTokensUtil} from "./AuthTokensUtil";
 
 export class AuthStore {
     @observable
@@ -16,8 +16,8 @@ export class AuthStore {
     @action
     public async initAuth() {
         try {
-            const accessToken = AuthUtil.getAccessToken();
-            const refreshToken = localStorage.getItem("refreshToken");
+            const accessToken = AuthTokensUtil.getAccessToken();
+            const refreshToken = AuthTokensUtil.getRefreshToken();
 
             if (accessToken && refreshToken) {
                 runInAction(() => this.setAuthLoginTokens({accessToken, refreshToken}));
@@ -48,16 +48,16 @@ export class AuthStore {
 
     @action
     public setAuthLoginTokens(authLoginTokens: IAuthLoginTokens) {
-        localStorage.setItem("accessToken", authLoginTokens.accessToken);
-        localStorage.setItem("refreshToken", authLoginTokens.refreshToken);
+        AuthTokensUtil.setAccessToken(authLoginTokens.accessToken);
+        AuthTokensUtil.setRefreshToken(authLoginTokens.refreshToken);
         ApiService.api.defaults.headers["Authorization"] = authLoginTokens.accessToken;
         this.authLoginTokens = authLoginTokens;
     }
 
     @action
     public logout() {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        AuthTokensUtil.removeAccessToken();
+        AuthTokensUtil.removeRefreshToken();
         delete ApiService.api.defaults.headers["Authorization"];
         this.loggedUser = null;
         this.authLoginTokens = null;
