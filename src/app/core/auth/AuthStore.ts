@@ -1,10 +1,10 @@
 import {ILoggedUser} from "./interface/ILoggedUser";
 import {IAuthLoginTokens} from "./interface/IAuthLoginTokens";
-import {action, computed, observable, runInAction} from "mobx";
+import {action, computed, makeObservable, observable, runInAction} from "mobx";
 import {ApiService} from "../api/ApiService";
-import {AuthService} from "./AuthService";
 import {IAuthLoginCredentials} from "./interface/IAuthLoginCredentials";
 import {AuthTokensUtil} from "./AuthTokensUtil";
+import {AuthService} from "./AuthService";
 
 export class AuthStore {
     @observable
@@ -12,6 +12,10 @@ export class AuthStore {
 
     @observable
     public authLoginTokens: IAuthLoginTokens = null;
+
+    constructor() {
+        makeObservable(this);
+    }
 
     @action
     public async initAuth() {
@@ -64,7 +68,7 @@ export class AuthStore {
     }
 
     @computed
-    public isLoggedIn() {
+    public get isLoggedIn() {
         return !!this.loggedUser && !!this.authLoginTokens;
     }
 }

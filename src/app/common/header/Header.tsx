@@ -57,7 +57,7 @@ export class Header extends React.Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav>
-                            {rootStore.auth.isLoggedIn()
+                            {rootStore.auth.isLoggedIn
                                 ? this.getLoggedInUserAvailableActions()
                                 : this.getLoggedOutUserAvailableActions()}
                         </Nav>
