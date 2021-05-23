@@ -1,5 +1,5 @@
 import * as React from "react";
-import {rootStore} from "../../../renderer";
+import {customHistory, rootStore} from "../../../renderer";
 import {observer} from "mobx-react";
 import {Button} from "react-bootstrap";
 import {IGame} from "../interface/IGame";
@@ -10,7 +10,9 @@ export class UserGamesList extends React.Component {
         rootStore.game.loadUserGames();
     }
 
-    protected joinToGame = (gameId: string) => {};
+    protected joinToGame = (gameId: string) => {
+        customHistory.push(`/game/${gameId}`);
+    };
 
     public render() {
         return (
