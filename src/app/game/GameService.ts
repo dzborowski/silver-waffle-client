@@ -3,8 +3,21 @@ import {ApiService} from "../core/api/ApiService";
 import {IMove} from "./interface/IMove";
 
 export class GameService {
-    public static async getGames(): Promise<IGame[]> {
+    public static async createGame(gameSize: number): Promise<void> {
+        await ApiService.api.post("/game", {gameSize});
+    }
+
+    public static async joinToGame(gameId: string): Promise<void> {
+        await ApiService.api.post(`/game/${gameId}/join-to-game`);
+    }
+
+    public static async getUserGames(): Promise<IGame[]> {
         const response = await ApiService.api.get("/game");
+        return response.data as IGame[];
+    }
+
+    public static async getAvailableGames(): Promise<IGame[]> {
+        const response = await ApiService.api.get("/game/available-games");
         return response.data as IGame[];
     }
 

@@ -5,8 +5,8 @@ import {Header} from "./common/header/Header";
 import {Register} from "./core/auth/view/Register";
 import {Login} from "./core/auth/view/Login";
 import {customHistory, rootStore} from "../renderer";
-import {GamesList} from "./game/view/GamesList";
 import {Game} from "./game/view/Game";
+import {GameManagementPanel} from "./game/view/GameManagementPanel";
 
 export class App extends React.Component {
     public async componentDidMount() {
@@ -30,7 +30,7 @@ export class App extends React.Component {
                                 <Game />
                             </Route>
                             <Route path="/">
-                                <GamesList />
+                                <GameManagementPanel />
                             </Route>
                         </Switch>
                     </div>
