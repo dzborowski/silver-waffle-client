@@ -3,8 +3,9 @@ import {ApiService} from "../core/api/ApiService";
 import {IMove} from "./interface/IMove";
 
 export class GameService {
-    public static async createGame(gameSize: number): Promise<void> {
-        await ApiService.api.post("/game", {gameSize});
+    public static async createGame(gameSize: number): Promise<IGame> {
+        const response = await ApiService.api.post("/game", {gameSize});
+        return response.data as IGame;
     }
 
     public static async joinToGame(gameId: string): Promise<void> {
