@@ -4,6 +4,7 @@ import {Button} from "react-bootstrap";
 import {IGame} from "../../interface/IGame";
 import {GameService} from "../../GameService";
 import {AppModel} from "../../../AppModel";
+import "./AvailableGamesList.scss";
 
 @observer
 export class AvailableGamesList extends React.Component {

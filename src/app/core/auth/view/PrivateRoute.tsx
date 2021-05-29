@@ -23,9 +23,7 @@ export class PrivateRoute extends React.Component<RouteProps> {
                         />
                     );
                 }}
-            >
-                {/* {AppModel.rootStore.auth.isLoggedIn ? children : <Redirect to={"/login"} />}*/}
-            </Route>
+            />
         );
     }
 }

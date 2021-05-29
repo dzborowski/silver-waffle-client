@@ -22,6 +22,11 @@ export class GameService {
         return response.data as IGame[];
     }
 
+    public static async getGame(gameId: string): Promise<IGame> {
+        const response = await ApiService.api.get(`/game/${gameId}`);
+        return response.data as IGame;
+    }
+
     public static async getGameMoves(gameId: string): Promise<IMove[]> {
         const response = await ApiService.api.get(`/game/${gameId}/moves`);
         return response.data as IMove[];

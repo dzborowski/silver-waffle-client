@@ -2,6 +2,7 @@ import * as React from "react";
 import {Button} from "react-bootstrap";
 import {GameService} from "../../GameService";
 import {AppModel} from "../../../AppModel";
+import "./GameCreator.scss";
 
 interface IState {
     gameSize: number;

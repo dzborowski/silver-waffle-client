@@ -1,0 +1,8 @@
+.Move {
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,0 +1,18 @@
+.Game {
+  h3 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .moves-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .moves {
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    box-sizing: content-box;
+  }
+}
