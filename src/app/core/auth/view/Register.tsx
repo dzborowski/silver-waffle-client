@@ -45,7 +45,7 @@ export class Register extends React.Component<IProps, IState> {
                 <Form>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>Imię</Form.Label>
+                            <Form.Label>Firstname</Form.Label>
                             <Form.Control
                                 value={this.state.authRegisterUser.firstName}
                                 onChange={(event) => {
@@ -55,7 +55,7 @@ export class Register extends React.Component<IProps, IState> {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Nazwisko</Form.Label>
+                            <Form.Label>Lastname</Form.Label>
                             <Form.Control
                                 value={this.state.authRegisterUser.lastName}
                                 onChange={(event) => {
@@ -92,7 +92,7 @@ export class Register extends React.Component<IProps, IState> {
                     </Form.Row>
 
                     <Button variant="primary" onClick={this.register}>
-                        Zarejestruj się
+                        Sign up
                     </Button>
                 </Form>
             </div>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button} from "react-bootstrap";
-import {GameService} from "../GameService";
-import {AppModel} from "../../AppModel";
+import {GameService} from "../../GameService";
+import {AppModel} from "../../../AppModel";
 
 interface IState {
     gameSize: number;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
 import "./Header.scss";
 import {observer} from "mobx-react";
 import {AppModel} from "../../AppModel";
@@ -13,10 +14,10 @@ export class Header extends React.Component {
                 <NavDropdown.Item
                     onClick={() => {
                         AppModel.rootStore.auth.logout();
-                        AppModel.history.push("/");
+                        AppModel.history.push("/login");
                     }}
                 >
-                    Wyloguj się
+                    Logout
                 </NavDropdown.Item>
             </NavDropdown>
         );
@@ -24,20 +25,20 @@ export class Header extends React.Component {
 
     protected getLoggedOutUserAvailableActions(): React.ReactNode {
         return (
-            <NavDropdown title="Konto" id="collasible-nav-dropdown">
+            <NavDropdown title="Account" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                     onClick={() => {
                         AppModel.history.push("/login");
                     }}
                 >
-                    Zaloguj się
+                    Sign in
                 </NavDropdown.Item>
                 <NavDropdown.Item
                     onClick={() => {
                         AppModel.history.push("/register");
                     }}
                 >
-                    Zarejestruj się
+                    Sign up
                 </NavDropdown.Item>
             </NavDropdown>
         );
@@ -47,15 +48,12 @@ export class Header extends React.Component {
         return (
             <div className={"Header"}>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand
-                        onClick={() => {
-                            AppModel.history.push("/");
-                        }}
-                    >
-                        Gry
-                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mr-auto">
+                            <NavLink to={"/my-games"}>My games</NavLink>
+                            <NavLink to={"/available-games"}>Available games</NavLink>
+                        </Nav>
                         <Nav>
                             {AppModel.rootStore.auth.isLoggedIn
                                 ? this.getLoggedInUserAvailableActions()

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {AppModel} from "../../AppModel";
+import {AppModel} from "../../../AppModel";
 
 export class Game extends React.Component {
     public componentDidMount() {

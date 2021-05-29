@@ -2,10 +2,10 @@ import * as React from "react";
 import {AvailableGamesList} from "./AvailableGamesList";
 import {GameCreator} from "./GameCreator";
 
-export class GameManagementPanel extends React.Component {
+export class AvailableGamesCockpit extends React.Component {
     public render() {
         return (
-            <div className={"GameManagementPanel"}>
+            <div className={"AvailableGamesCockpit"}>
                 <GameCreator />
                 <AvailableGamesList />
             </div>

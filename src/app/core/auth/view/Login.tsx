@@ -33,7 +33,7 @@ export class Login extends React.Component<IProps, IState> {
 
     protected login = async () => {
         await AppModel.rootStore.auth.login(this.state.authLoginCredentials);
-        const {from} = AppModel.history.location.state || {from: {pathname: "/"}};
+        const {from} = AppModel.history.location.state || {from: {pathname: "/my-games"}};
         AppModel.history.replace(from);
     };
 
@@ -67,7 +67,7 @@ export class Login extends React.Component<IProps, IState> {
                     </Form.Group>
 
                     <Button variant="primary" onClick={this.login}>
-                        Zaloguj się
+                        Sign in
                     </Button>
                 </Form>
             </div>

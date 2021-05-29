@@ -1,9 +1,9 @@
 import * as React from "react";
 import {observer} from "mobx-react";
 import {Button} from "react-bootstrap";
-import {IGame} from "../interface/IGame";
-import {GameService} from "../GameService";
-import {AppModel} from "../../AppModel";
+import {IGame} from "../../interface/IGame";
+import {GameService} from "../../GameService";
+import {AppModel} from "../../../AppModel";
 
 @observer
 export class AvailableGamesList extends React.Component {
