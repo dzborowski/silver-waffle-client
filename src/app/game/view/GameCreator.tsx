@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button} from "react-bootstrap";
 import {GameService} from "../GameService";
-import {customHistory} from "../../../renderer";
+import {AppModel} from "../../AppModel";
 
 interface IState {
     gameSize: number;
@@ -17,7 +17,7 @@ export class GameCreator extends React.Component<{}, IState> {
 
     protected createGame = async () => {
         const game = await GameService.createGame(this.state.gameSize);
-        customHistory.push(`/game/${game.id}`);
+        AppModel.history.push(`/game/${game.id}`);
     };
 
     protected changeGameSize = (event) => {

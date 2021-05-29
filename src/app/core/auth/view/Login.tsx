@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Button, Form} from "react-bootstrap";
 import {IAuthLoginCredentials} from "../interface/IAuthLoginCredentials";
-import {customHistory, rootStore} from "../../../../renderer";
+import {AppModel} from "../../../AppModel";
 
 interface IProps {}
 
@@ -32,8 +32,9 @@ export class Login extends React.Component<IProps, IState> {
     };
 
     protected login = async () => {
-        await rootStore.auth.login(this.state.authLoginCredentials);
-        customHistory.push("/");
+        await AppModel.rootStore.auth.login(this.state.authLoginCredentials);
+        const {from} = AppModel.history.location.state || {from: {pathname: "/"}};
+        AppModel.history.replace(from);
     };
 
     public render() {

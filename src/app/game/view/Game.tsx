@@ -1,9 +1,9 @@
 import * as React from "react";
-import {socket} from "../../../renderer";
+import {AppModel} from "../../AppModel";
 
 export class Game extends React.Component {
     public componentDidMount() {
-        socket.emit("join-to-game");
+        AppModel.socket.emit("join-to-game");
     }
 
     public render() {

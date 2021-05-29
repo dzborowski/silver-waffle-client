@@ -1,19 +1,19 @@
 import * as React from "react";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import "./Header.scss";
-import {customHistory, rootStore} from "../../../renderer";
 import {observer} from "mobx-react";
+import {AppModel} from "../../AppModel";
 
 @observer
 export class Header extends React.Component {
     protected getLoggedInUserAvailableActions(): React.ReactNode {
-        const loggedUser = rootStore.auth.loggedUser;
+        const loggedUser = AppModel.rootStore.auth.loggedUser;
         return (
             <NavDropdown title={`${loggedUser?.firstName} ${loggedUser?.lastName}`} id="collasible-nav-dropdown">
                 <NavDropdown.Item
                     onClick={() => {
-                        rootStore.auth.logout();
-                        customHistory.push("/");
+                        AppModel.rootStore.auth.logout();
+                        AppModel.history.push("/");
                     }}
                 >
                     Wyloguj się
@@ -27,14 +27,14 @@ export class Header extends React.Component {
             <NavDropdown title="Konto" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                     onClick={() => {
-                        customHistory.push("/login");
+                        AppModel.history.push("/login");
                     }}
                 >
                     Zaloguj się
                 </NavDropdown.Item>
                 <NavDropdown.Item
                     onClick={() => {
-                        customHistory.push("/register");
+                        AppModel.history.push("/register");
                     }}
                 >
                     Zarejestruj się
@@ -49,7 +49,7 @@ export class Header extends React.Component {
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Navbar.Brand
                         onClick={() => {
-                            customHistory.push("/");
+                            AppModel.history.push("/");
                         }}
                     >
                         Gry
@@ -57,7 +57,7 @@ export class Header extends React.Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav>
-                            {rootStore.auth.isLoggedIn
+                            {AppModel.rootStore.auth.isLoggedIn
                                 ? this.getLoggedInUserAvailableActions()
                                 : this.getLoggedOutUserAvailableActions()}
                         </Nav>

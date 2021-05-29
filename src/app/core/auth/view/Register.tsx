@@ -2,7 +2,7 @@ import * as React from "react";
 import {Button, Col, Form} from "react-bootstrap";
 import {IAuthRegisterUser} from "../interface/IAuthRegisterUser";
 import {AuthService} from "../AuthService";
-import {customHistory} from "../../../../renderer";
+import {AppModel} from "../../../AppModel";
 
 interface IProps {}
 
@@ -36,7 +36,7 @@ export class Register extends React.Component<IProps, IState> {
 
     protected register = async () => {
         await AuthService.registerUser(this.state.authRegisterUser);
-        customHistory.push("/login");
+        AppModel.history.push("/login");
     };
 
     public render() {
