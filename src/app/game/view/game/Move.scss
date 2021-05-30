@@ -1,8 +1,20 @@
 .Move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
   border: 1px solid black;
   cursor: pointer;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
+}
+
+.yourMove {
+  background-color: #c8e6c9;
+}
+
+.oponentMove {
+  background-color: #ffcdd2;
 }

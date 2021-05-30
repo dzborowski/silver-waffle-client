@@ -1,7 +1,25 @@
 .Game {
   h3 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+  }
+
+  .result {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .result-win {
+    color: #81c784;
+  }
+
+  .result-draw {
+    color: #dce775;
+  }
+
+  .result-lost {
+    color: #e57373;
   }
 
   .moves-wrapper {

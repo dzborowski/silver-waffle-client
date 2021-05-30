@@ -34,6 +34,14 @@ export class AppInitializer {
                 cb(data);
             },
         });
+
+        AppModel.socket.on("custom-error", (error) => {
+            alert(error?.errorMessage ?? error);
+        });
+
+        AppModel.socket.on("connect_error", (error) => {
+            console.log(error?.message ?? error);
+        });
     }
 
     protected static renderView() {
