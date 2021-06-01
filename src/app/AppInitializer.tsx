@@ -36,7 +36,7 @@ export class AppInitializer {
         });
 
         AppModel.socket.on("custom-error", (error) => {
-            alert(error?.errorMessage ?? error);
+            console.log(error?.errorMessage ?? error);
         });
 
         AppModel.socket.on("connect_error", (error) => {

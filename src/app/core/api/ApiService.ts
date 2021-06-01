@@ -15,7 +15,7 @@ export class ApiService {
                 const errorMessage = error?.response?.data?.errorMessage;
 
                 if (errorMessage) {
-                    alert(errorMessage);
+                    console.log(errorMessage);
                 }
 
                 return Promise.reject(error);
