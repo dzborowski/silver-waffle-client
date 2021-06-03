@@ -8,7 +8,6 @@ import {RouteComponentProps} from "react-router";
 import {GameService} from "../../GameService";
 import {Move} from "./Move";
 import "./Game.scss";
-import {GameState} from "../../GameState";
 import {GameEndResult} from "../../GameEndResult";
 import {NotificationUtil} from "../../../core/notifications/NotificationUtil";
 import {GameUtil} from "../../GameUtil";
@@ -60,32 +59,6 @@ export class Game extends React.Component<IProps, IState> {
 
     protected getMoveForPosition(position: number): IMove {
         return this.state.moves.find((move: IMove) => move.position === position);
-    }
-
-    protected getGameEndResult(): GameEndResult {
-        const {game} = this.state;
-        if (game.state === GameState.FINISHED) {
-            if (game.winnerId === AppModel.rootStore.auth.loggedUser.id) {
-                return GameEndResult.WIN;
-            } else if (game.winnerId === null) {
-                return GameEndResult.DRAW;
-            }
-            return GameEndResult.LOST;
-        }
-    }
-
-    protected getGameEndResultDescription(): string {
-        const gameEndResult = this.getGameEndResult();
-        switch (gameEndResult) {
-            case GameEndResult.WIN:
-                return "You win!";
-            case GameEndResult.DRAW:
-                return "Draw";
-            case GameEndResult.LOST:
-                return "You lost :<";
-            default:
-                return null;
-        }
     }
 
     public render() {
