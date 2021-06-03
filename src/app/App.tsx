@@ -9,6 +9,7 @@ import {AvailableGamesCockpit} from "./game/view/availableGames/AvailableGamesCo
 import {PrivateRoute} from "./core/auth/view/PrivateRoute";
 import {AppModel} from "./AppModel";
 import {UserGamesCockpit} from "./game/view/userGames/UserGamesCockpit";
+import {NotFound} from "./common/NotFound";
 
 export class App extends React.Component {
     public render() {
@@ -32,7 +33,7 @@ export class App extends React.Component {
                             </PrivateRoute>
                             <PrivateRoute path="/game/:gameId" component={Game} />
                             <Route path={"*"}>
-                                <h4>Not found :(</h4>
+                                <NotFound />
                             </Route>
                         </Switch>
                     </div>
