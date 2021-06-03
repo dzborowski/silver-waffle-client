@@ -4,18 +4,18 @@ import {createBrowserHistory} from "history";
 import {RootStore} from "./core/RootStore";
 import {io} from "socket.io-client";
 import {AppConfig} from "./AppConfig";
-import {AuthTokensUtil} from "./core/auth/AuthTokensUtil";
 import * as ReactDOM from "react-dom";
 import {App} from "./App";
 import * as React from "react";
 import {NotificationUtil} from "./core/notifications/NotificationUtil";
+import {AuthTokensUtil} from "./core/auth/AuthTokensUtil";
 
 export class AppInitializer {
     public static async init() {
         ApiService.init();
+        AppInitializer.initSocket();
         AppInitializer.initHistory();
         AppInitializer.initStore();
-        AppInitializer.initSocket();
         await AppModel.rootStore.auth.initAuth();
         AppInitializer.renderView();
     }

@@ -5,6 +5,7 @@ import {ApiService} from "../api/ApiService";
 import {IAuthLoginCredentials} from "./interface/IAuthLoginCredentials";
 import {AuthTokensUtil} from "./AuthTokensUtil";
 import {AuthService} from "./AuthService";
+import {AppModel} from "../../AppModel";
 
 export class AuthStore {
     @observable
@@ -40,6 +41,7 @@ export class AuthStore {
             runInAction(() => this.setAuthLoginTokens(authLoginTokens));
             const loggedUser = await AuthService.getLoggedUser();
             runInAction(() => this.setLoggedUser(loggedUser));
+            AppModel.socket.connect();
         } catch (error) {
             console.log(error);
         }
