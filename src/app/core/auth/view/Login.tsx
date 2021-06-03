@@ -3,6 +3,7 @@ import {Button, Form} from "react-bootstrap";
 import {IAuthLoginCredentials} from "../interface/IAuthLoginCredentials";
 import {AppModel} from "../../../AppModel";
 import "./Login.scss";
+import {NotificationUtil} from "../../notifications/NotificationUtil";
 
 interface IProps {}
 
@@ -36,6 +37,7 @@ export class Login extends React.Component<IProps, IState> {
         await AppModel.rootStore.auth.login(this.state.authLoginCredentials);
         const {from} = AppModel.history.location.state || {from: {pathname: "/my-games"}};
         AppModel.history.replace(from);
+        NotificationUtil.success({message: "Sign in successfully!"});
     };
 
     public render() {

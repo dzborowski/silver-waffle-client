@@ -1,5 +1,7 @@
 import * as React from "react";
 import {Route, Router, Switch} from "react-router-dom";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import "./App.scss";
 import {Header} from "./common/header/Header";
 import {Register} from "./core/auth/view/Register";
@@ -15,6 +17,7 @@ export class App extends React.Component {
     public render() {
         return (
             <div className={"App"}>
+                <ReactNotification />
                 <Router history={AppModel.history}>
                     <Header />
                     <div className={"content"}>

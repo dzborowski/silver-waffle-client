@@ -10,6 +10,7 @@ import {Move} from "./Move";
 import "./Game.scss";
 import {GameState} from "../../GameState";
 import {GameEndResult} from "../../GameEndResult";
+import {NotificationUtil} from "../../../core/notifications/NotificationUtil";
 
 interface IProps extends RouteComponentProps<{gameId: string}> {}
 
@@ -33,6 +34,12 @@ export class Game extends React.Component<IProps, IState> {
     public componentDidMount() {
         AppModel.socket.emit("join-to-game", this.gameId);
         AppModel.socket.on("move-was-made", this.loadGameIngredients);
+        AppModel.socket.on("player-joined-to-game", () => {
+            NotificationUtil.info({message: "Oponent joined to game"});
+        });
+        AppModel.socket.on("player-leave-game", () => {
+            NotificationUtil.info({message: "Oponent leave game"});
+        });
         this.loadGameIngredients();
     }
 

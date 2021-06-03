@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 import {GameService} from "../../GameService";
 import {AppModel} from "../../../AppModel";
 import "./GameCreator.scss";
+import {NotificationUtil} from "../../../core/notifications/NotificationUtil";
 
 interface IState {
     gameSize: number;
@@ -19,6 +20,7 @@ export class GameCreator extends React.Component<{}, IState> {
     protected createGame = async () => {
         const game = await GameService.createGame(this.state.gameSize);
         AppModel.history.push(`/game/${game.id}`);
+        NotificationUtil.success({message: "Game created!"});
     };
 
     protected changeGameSize = (event) => {

@@ -8,6 +8,7 @@ import {AuthTokensUtil} from "./core/auth/AuthTokensUtil";
 import * as ReactDOM from "react-dom";
 import {App} from "./App";
 import * as React from "react";
+import {NotificationUtil} from "./core/notifications/NotificationUtil";
 
 export class AppInitializer {
     public static async init() {
@@ -36,7 +37,7 @@ export class AppInitializer {
         });
 
         AppModel.socket.on("custom-error", (error) => {
-            console.log(error?.errorMessage ?? error);
+            NotificationUtil.danger({message: error?.errorMessage ?? error});
         });
 
         AppModel.socket.on("connect_error", (error) => {

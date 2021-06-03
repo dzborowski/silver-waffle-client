@@ -1,5 +1,6 @@
 import axios, {AxiosInstance} from "axios";
 import {AppConfig} from "../../AppConfig";
+import {NotificationUtil} from "../notifications/NotificationUtil";
 
 export class ApiService {
     public static api: AxiosInstance;
@@ -15,7 +16,7 @@ export class ApiService {
                 const errorMessage = error?.response?.data?.errorMessage;
 
                 if (errorMessage) {
-                    console.log(errorMessage);
+                    NotificationUtil.danger({message: errorMessage});
                 }
 
                 return Promise.reject(error);

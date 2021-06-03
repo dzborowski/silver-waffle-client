@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import "./Header.scss";
 import {observer} from "mobx-react";
 import {AppModel} from "../../AppModel";
+import {NotificationUtil} from "../../core/notifications/NotificationUtil";
 
 @observer
 export class Header extends React.Component {
@@ -15,6 +16,7 @@ export class Header extends React.Component {
                     onClick={() => {
                         AppModel.rootStore.auth.logout();
                         AppModel.history.push("/login");
+                        NotificationUtil.success({message: "Logout successfully!"});
                     }}
                 >
                     Logout

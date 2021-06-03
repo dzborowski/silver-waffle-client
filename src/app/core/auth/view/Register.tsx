@@ -4,6 +4,7 @@ import {IAuthRegisterUser} from "../interface/IAuthRegisterUser";
 import {AuthService} from "../AuthService";
 import {AppModel} from "../../../AppModel";
 import "./Register.scss";
+import {NotificationUtil} from "../../notifications/NotificationUtil";
 
 interface IProps {}
 
@@ -38,6 +39,7 @@ export class Register extends React.Component<IProps, IState> {
     protected register = async () => {
         await AuthService.registerUser(this.state.authRegisterUser);
         AppModel.history.push("/login");
+        NotificationUtil.success({message: "Sign up successfully!"});
     };
 
     public render() {
