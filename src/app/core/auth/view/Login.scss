@@ -1,0 +1,17 @@
+.Login {
+  display: flex;
+  justify-content: center;
+
+  .login-form {
+    width: 700px;
+  }
+
+  .login-cta {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 150px;
+    }
+  }
+}

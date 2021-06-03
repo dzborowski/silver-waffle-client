@@ -31,7 +31,9 @@ export class App extends React.Component {
                                 <AvailableGamesCockpit />
                             </PrivateRoute>
                             <PrivateRoute path="/game/:gameId" component={Game} />
-                            <Route path={"*"}>Not found :(</Route>
+                            <Route path={"*"}>
+                                <h4>Not found :(</h4>
+                            </Route>
                         </Switch>
                     </div>
                 </Router>

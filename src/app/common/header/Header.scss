@@ -1,5 +1,18 @@
 .Header {
-    .navbar {
-        padding: 15px 100px;
+  .navbar {
+    padding: 15px 100px;
+  }
+
+  .menu-link {
+    padding: 5px 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .5);
+
+    &.active, &:hover {
+      color: rgba(255, 255, 255, .75);
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, .5);
     }
+  }
 }

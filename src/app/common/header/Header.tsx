@@ -51,8 +51,12 @@ export class Header extends React.Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <NavLink to={"/my-games"}>My games</NavLink>
-                            <NavLink to={"/available-games"}>Available games</NavLink>
+                            <NavLink to={"/my-games"} className={"menu-link"}>
+                                My games
+                            </NavLink>
+                            <NavLink to={"/available-games"} className={"menu-link"}>
+                                Available games
+                            </NavLink>
                         </Nav>
                         <Nav>
                             {AppModel.rootStore.auth.isLoggedIn

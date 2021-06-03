@@ -3,6 +3,7 @@ import {Button, Col, Form} from "react-bootstrap";
 import {IAuthRegisterUser} from "../interface/IAuthRegisterUser";
 import {AuthService} from "../AuthService";
 import {AppModel} from "../../../AppModel";
+import "./Register.scss";
 
 interface IProps {}
 
@@ -42,7 +43,7 @@ export class Register extends React.Component<IProps, IState> {
     public render() {
         return (
             <div className={"Register"}>
-                <Form>
+                <Form className={"register-form"}>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label>Firstname</Form.Label>
@@ -91,9 +92,11 @@ export class Register extends React.Component<IProps, IState> {
                         </Form.Group>
                     </Form.Row>
 
-                    <Button variant="primary" onClick={this.register}>
-                        Sign up
-                    </Button>
+                    <Form.Row className={"register-cta"}>
+                        <Button variant="primary" onClick={this.register}>
+                            Sign up
+                        </Button>
+                    </Form.Row>
                 </Form>
             </div>
         );

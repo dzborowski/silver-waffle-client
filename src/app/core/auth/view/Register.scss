@@ -1,0 +1,17 @@
+.Register {
+  display: flex;
+  justify-content: center;
+
+  .register-form {
+    width: 700px;
+  }
+
+  .register-cta {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 150px;
+    }
+  }
+}

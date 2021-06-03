@@ -2,6 +2,7 @@ import * as React from "react";
 import {Button, Form} from "react-bootstrap";
 import {IAuthLoginCredentials} from "../interface/IAuthLoginCredentials";
 import {AppModel} from "../../../AppModel";
+import "./Login.scss";
 
 interface IProps {}
 
@@ -40,7 +41,7 @@ export class Login extends React.Component<IProps, IState> {
     public render() {
         return (
             <div className={"Login"}>
-                <Form>
+                <Form className={"login-form"}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -66,9 +67,11 @@ export class Login extends React.Component<IProps, IState> {
                         />
                     </Form.Group>
 
-                    <Button variant="primary" onClick={this.login}>
-                        Sign in
-                    </Button>
+                    <Form.Row className={"login-cta"}>
+                        <Button variant="primary" onClick={this.login}>
+                            Sign in
+                        </Button>
+                    </Form.Row>
                 </Form>
             </div>
         );
