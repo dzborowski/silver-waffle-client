@@ -4,6 +4,7 @@ import {Button, Table} from "react-bootstrap";
 import {IGame} from "../../interface/IGame";
 import {AppModel} from "../../../AppModel";
 import "./UserGamesList.scss";
+import {GameUtil} from "../../GameUtil";
 
 @observer
 export class UserGamesList extends React.Component {
@@ -15,8 +16,6 @@ export class UserGamesList extends React.Component {
         AppModel.history.push(`/game/${gameId}`);
     };
 
-    protected getWinnerDescription = (game: IGame) => {};
-
     public render() {
         return (
             <div className={"UserGamesList"}>
@@ -25,7 +24,7 @@ export class UserGamesList extends React.Component {
                         <tr>
                             <th>ID</th>
                             <th>Status</th>
-                            <th>Winner</th>
+                            <th>End result</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -34,7 +33,7 @@ export class UserGamesList extends React.Component {
                             <tr key={game.id}>
                                 <td>{game.id}</td>
                                 <td>{game.state}</td>
-                                <td></td>
+                                <td>{GameUtil.getGameEndResultDescription(game)}</td>
                                 <td>
                                     <Button variant="success" onClick={() => this.joinToGame(game.id)}>
                                         Join to game

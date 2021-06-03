@@ -10,7 +10,10 @@ import "./AvailableGamesList.scss";
 export class AvailableGamesList extends React.Component {
     public componentDidMount() {
         AppModel.rootStore.game.loadAvailableGames();
-        AppModel.socket.on("available-games-state-have-changed", () => {
+        AppModel.socket.on("new-game-was-created", async () => {
+            AppModel.rootStore.game.loadAvailableGames();
+        });
+        AppModel.socket.on("player-joined-to-available-game", () => {
             AppModel.rootStore.game.loadAvailableGames();
         });
     }

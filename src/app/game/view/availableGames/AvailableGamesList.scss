@@ -2,10 +2,8 @@
   .available-game {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 800px;
     margin-bottom: 15px;
-
-    button {
-      margin-left: 150px;
-    }
   }
 }

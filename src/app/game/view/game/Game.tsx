@@ -11,6 +11,7 @@ import "./Game.scss";
 import {GameState} from "../../GameState";
 import {GameEndResult} from "../../GameEndResult";
 import {NotificationUtil} from "../../../core/notifications/NotificationUtil";
+import {GameUtil} from "../../GameUtil";
 
 interface IProps extends RouteComponentProps<{gameId: string}> {}
 
@@ -96,8 +97,8 @@ export class Game extends React.Component<IProps, IState> {
 
         const gameEdgeSize = game.size * Game.MOVE_EDGE_SIZE;
         const movesPositions = _.range(0, game.size ** 2);
-        const gameEndResult = this.getGameEndResult();
-        const gameEndResultDescription = this.getGameEndResultDescription();
+        const gameEndResult = GameUtil.getGameEndResult(game);
+        const gameEndResultDescription = GameUtil.getGameEndResultDescription(game);
 
         return (
             <div className={"Game"}>
